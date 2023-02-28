@@ -1,10 +1,11 @@
 # AutoReannouce-deluge
 This script is used to automatically re-announce a torrent to its tracker in case the tracker status is not "Announce OK".
 
-## Usage
+## Installation
 1. Install the Execute plugin: Go to Deluge preferences, then to Plugins, and search for "Execute". Click on the Install button next to the Execute plugin to install it.
 2. Make sure the script is executable (chmod +x autoreannounce).
-3. Add the script to Deluge: In the Deluge preferences, go to the Execute tab. Click on the Add button to add a new event handler. Choose the event that you want to trigger the script (e.g., "Torrent Complete").
+3. Add the script to Deluge: In the Deluge preferences, go to the Execute tab. Click on the Add button to add a new event handler. Choose the event that you want to trigger the script, in this case it should be "Torrent Added", set the path to the script and save the settings.
+4. Restart Deluge, make sure that after deluge reloads, the "Execute" plugin is still active. if not re-enable it again.
 
 ## Configuration
 
