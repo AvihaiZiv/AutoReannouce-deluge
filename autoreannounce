@@ -7,7 +7,7 @@ count=0
 
 #change these variables according to your configuration
 
-Dport=12706 #deluge Daemon port
+Dport="58846" #deluge Daemon port
 logpath="~/AutoReannounce.log" #log file path
 
 
