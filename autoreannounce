@@ -11,7 +11,6 @@ Dport="58846" #deluge Daemon port
 logpath="~/AutoReannounce.log" #log file path
 
 
-echo "${torrentname}:" >> $logpath
 checktorrent=$(deluge-console "connect 127.0.0.1:${Dport}; info -v $torrentid" | grep "Tracker status" | awk -F': ' '{ print $2 }') 
 while [ "$count" -lt 100 ] && [[ "$checktorrent" != "Announce OK" ]]; do
   deluge-console "connect 127.0.0.1:${Dport}; update_tracker $torrentid"
@@ -21,6 +20,7 @@ while [ "$count" -lt 100 ] && [[ "$checktorrent" != "Announce OK" ]]; do
 done
 case "$count" in
 99)
+  echo "${torrentname}:" >> $logpath
   echo "  Torrent ID: ${torrentid}" >> $logpath
   echo "  Torrent Path: ${torrentpath}" >> $logpath
   echo "  Tracker status: ${checktorrent}." >> $logpath
@@ -28,6 +28,7 @@ case "$count" in
   exit 1
   ;;
 *)
+  echo "${torrentname}:" >> $logpath
   echo "  Torrent ID: ${torrentid}" >> $logpath
   echo "  Torrent Path: ${torrentpath}" >> $logpath
   echo "  Tracker status: ${checktorrent}." >> $logpath
